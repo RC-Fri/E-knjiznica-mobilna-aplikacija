@@ -1,12 +1,6 @@
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,7 +36,7 @@ fun MaterialItem(material: Material, onExtendDate: (Material) -> Unit, onView: (
                 Text(
                     text = material.status,
                     fontSize = 14.sp,
-                    color = Color.Black, //TODO: Change based on status
+                    color = getStatusColor(material.status),
                     modifier = Modifier.weight(1f)
                 )
 
@@ -96,7 +90,7 @@ fun MaterialItem2(material: Material, onBorrowMaterial: (Material) -> Unit) {
                 Text(
                     text = material.status,
                     fontSize = 14.sp,
-                    color = Color.Black, //TODO: Change based on status
+                    color = getStatusColor(material.status),
                     modifier = Modifier.weight(1f)
                 )
 
@@ -115,5 +109,16 @@ fun MaterialItem2(material: Material, onBorrowMaterial: (Material) -> Unit) {
                 Text(text = "Borrow")
             }
         }
+    }
+}
+
+@Composable
+fun getStatusColor(status: String): Color {
+    return when (status) {
+        //A few examples
+        "Na voljo" -> Color.Green
+        "Izposojeno" -> Color.Red
+        "Rezervirano" -> Color.Blue
+        else -> Color.Gray
     }
 }

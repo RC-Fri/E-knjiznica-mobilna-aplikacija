@@ -76,8 +76,7 @@ object DatabaseClient {
                     val id = resultSet.getInt("MaterialId")
                     val name = resultSet.getString("Name")
                     val status = resultSet.getString("Status")
-                    //TODO: add to db val details = resultSet.getString("ReturnBy")
-                    val details = "2025-02-15"
+                    val details = resultSet.getString("ReturnBy")
                     val material = Material(id, name, status, R.drawable.ic_launcher_foreground, details)
                     materials.add(material)
                 }
