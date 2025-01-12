@@ -23,6 +23,7 @@ object Routes {
     const val SEARCH = "search/{userId}/{username}"
 }
 
+
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun AppNavHost() {

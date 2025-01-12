@@ -15,7 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.e_knjiznica_mobilna_aplikacija.ui.main.Material
+import com.example.e_knjiznica_mobilna_aplikacija.data.model.Material
 
 @Composable
 fun MaterialItem(material: Material, onExtendDate: (Material) -> Unit, onView: (Material) -> Unit) {

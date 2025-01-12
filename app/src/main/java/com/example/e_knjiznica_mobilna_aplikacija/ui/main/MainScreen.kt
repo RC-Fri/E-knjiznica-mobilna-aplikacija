@@ -1,6 +1,5 @@
 package com.example.e_knjiznica_mobilna_aplikacija.ui.main
 
-import LoginViewModel
 import MaterialItem
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,11 +10,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.e_knjiznica_mobilna_aplikacija.data.model.MainViewModel
+import com.example.e_knjiznica_mobilna_aplikacija.data.model.Material
 
 @Composable
 fun MainScreen(

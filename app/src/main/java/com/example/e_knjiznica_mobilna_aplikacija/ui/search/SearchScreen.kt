@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.e_knjiznica_mobilna_aplikacija.data.model.SearchViewModel
-import com.example.e_knjiznica_mobilna_aplikacija.ui.main.Material
+import com.example.e_knjiznica_mobilna_aplikacija.data.model.Material
 
 @Composable
 fun SearchScreen(

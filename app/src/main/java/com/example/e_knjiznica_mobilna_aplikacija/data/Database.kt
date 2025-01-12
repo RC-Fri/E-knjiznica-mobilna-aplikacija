@@ -2,7 +2,7 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import com.example.e_knjiznica_mobilna_aplikacija.R
-import com.example.e_knjiznica_mobilna_aplikacija.ui.main.Material
+import com.example.e_knjiznica_mobilna_aplikacija.data.model.Material
 import kotlinx.coroutines.CoroutineScope
 import java.sql.DriverManager
 import kotlinx.coroutines.Dispatchers
