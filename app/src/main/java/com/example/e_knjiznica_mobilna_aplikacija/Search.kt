@@ -1,6 +1,5 @@
 package com.example.e_knjiznica_mobilna_aplikacija
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,7 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat.startActivity
+import com.example.e_knjiznica_mobilna_aplikacija.ui.main.Material
+import com.example.e_knjiznica_mobilna_aplikacija.ui.main.SearchScreen
 
 
 class Search : ComponentActivity() {
