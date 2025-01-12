@@ -23,14 +23,6 @@ fun MaterialItem(material: Material, onExtendDate: (Material) -> Unit, onView: (
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            /*
-            Text(
-                text = "Hello, $userName!",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-            */
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
@@ -38,6 +30,20 @@ fun MaterialItem(material: Material, onExtendDate: (Material) -> Unit, onView: (
                     contentDescription = material.name,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.size(80.dp).padding(end = 16.dp)
+                )
+
+                Text(
+                    text = material.name,
+                    fontSize = 14.sp,
+                    color = Color.Black,
+                    modifier = Modifier.weight(1f)
+                )
+
+                Text(
+                    text = material.status,
+                    fontSize = 14.sp,
+                    color = Color.Black, //TODO: Change based on status
+                    modifier = Modifier.weight(1f)
                 )
 
                 Text(
@@ -66,19 +72,11 @@ fun MaterialItem(material: Material, onExtendDate: (Material) -> Unit, onView: (
 }
 
 @Composable
-fun MaterialItem2(material: Material, onView: (Material) -> Unit) {
+fun MaterialItem2(material: Material, onBorrowMaterial: (Material) -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            /*
-            Text(
-                text = "Hello, $userName!",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-            */
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
@@ -86,6 +84,20 @@ fun MaterialItem2(material: Material, onView: (Material) -> Unit) {
                     contentDescription = material.name,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.size(80.dp).padding(end = 16.dp)
+                )
+
+                Text(
+                    text = material.name,
+                    fontSize = 14.sp,
+                    color = Color.Black,
+                    modifier = Modifier.weight(1f)
+                )
+
+                Text(
+                    text = material.status,
+                    fontSize = 14.sp,
+                    color = Color.Black, //TODO: Change based on status
+                    modifier = Modifier.weight(1f)
                 )
 
                 Text(
@@ -97,10 +109,10 @@ fun MaterialItem2(material: Material, onView: (Material) -> Unit) {
             }
 
             Button(
-                onClick = { onView(material) },
+                onClick = { onBorrowMaterial(material) },
                 modifier = Modifier.align(Alignment.End).padding(top = 8.dp)
             ) {
-                Text(text = "Detail")
+                Text(text = "Borrow")
             }
         }
     }

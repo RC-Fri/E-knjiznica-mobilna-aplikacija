@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 fun LoginScreen(
     uiState: LoginUiState,
     onLogin: (String, String) -> Unit,
-    onLoginSuccess: (String, String) -> Unit
+    onLoginSuccess: (Int) -> Unit
 ) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -28,7 +28,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
-            label = { Text(text = "Email") },
+            label = { Text(text = "Username") },
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(8.dp))
@@ -51,7 +51,7 @@ fun LoginScreen(
 
         LaunchedEffect(uiState.isLoggedIn) {
             if (uiState.isLoggedIn) {
-                onLoginSuccess(username, password)
+                onLoginSuccess(uiState.userId)
             }
         }
 

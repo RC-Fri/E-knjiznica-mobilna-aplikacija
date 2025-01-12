@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.e_knjiznica_mobilna_aplikacija.ui.main.Material
-import com.example.e_knjiznica_mobilna_aplikacija.ui.main.SearchScreen
+import com.example.e_knjiznica_mobilna_aplikacija.ui.search.SearchScreen
 
 
 class Search : ComponentActivity() {
@@ -125,17 +125,54 @@ fun CombinedScreen() {
         )
 
         SearchScreen(
-            userName = "Exit",
-            materials = listOf(
-                Material("Book A", R.drawable.ic_launcher_foreground, "This is Book A details."),
-                Material("Book B", R.drawable.ic_launcher_foreground, "This is Book B details."),
-                Material("Book C", R.drawable.ic_launcher_foreground, "This is Book C details."),
-                Material("Book D", R.drawable.ic_launcher_foreground, "This is Book D details."),
-                Material("Book E", R.drawable.ic_launcher_foreground, "This is Book E details."),
-                Material("Book F", R.drawable.ic_launcher_foreground, "This is Book F details.")
-            ),
+//            materials = listOf(
+//                Material(
+//                    0,
+//                    "Book A",
+//                    "Coocked",
+//                    R.drawable.ic_launcher_foreground,
+//                    "This is Book A details."
+//                ),
+//                Material(
+//                    0,
+//                    "Book A",
+//                    "Coocked",
+//                    R.drawable.ic_launcher_foreground,
+//                    "This is Book B details."
+//                ),
+//                Material(
+//                    0,
+//                    "Book A",
+//                    "Coocked",
+//                    R.drawable.ic_launcher_foreground,
+//                    "This is Book C details."
+//                ),
+//                Material(
+//                    0,
+//                    "Book A",
+//                    "Coocked",
+//                    R.drawable.ic_launcher_foreground,
+//                    "This is Book D details."
+//                ),
+//                Material(
+//                    0,
+//                    "Book A",
+//                    "Coocked",
+//                    R.drawable.ic_launcher_foreground,
+//                    "This is Book E details."
+//                ),
+//                Material(
+//                    0,
+//                    "Book A",
+//                    "Coocked",
+//                    R.drawable.ic_launcher_foreground,
+//                    "This is Book F details."
+//                )
+//            ),
             onBorrowMaterial = {},
-            onView = {}
+            userId = TODO(),
+            searchViewModel = TODO(),
+            onExit = TODO()
         )
 
         Button(
