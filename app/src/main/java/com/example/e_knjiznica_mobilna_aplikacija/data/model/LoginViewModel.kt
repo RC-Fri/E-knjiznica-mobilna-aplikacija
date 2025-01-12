@@ -21,7 +21,6 @@ class LoginViewModel : ViewModel() {
     fun login(username: String, password: String) {
         viewModelScope.launch {
             try {
-                //For some reason you have to login twice for this to work TODO: Fix!
                 if(initializeConnection()){
                     val isLoggedIn = DatabaseClient.validateCredentials(username, password)
                     if (isLoggedIn == -1) {

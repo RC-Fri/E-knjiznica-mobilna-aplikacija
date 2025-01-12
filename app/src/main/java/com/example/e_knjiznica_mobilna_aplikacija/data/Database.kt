@@ -1,5 +1,3 @@
-import android.content.ContentValues
-import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import com.example.e_knjiznica_mobilna_aplikacija.R
 import com.example.e_knjiznica_mobilna_aplikacija.data.model.Material
@@ -10,7 +8,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.sql.Connection
 import java.sql.ResultSet
-import java.sql.Statement
 
 object DatabaseClient {
     private const val CONNECTION_URL = "jdbc:jtds:sqlserver://eknjiznica-db.database.windows.net:1433/E-knjiznica;ssl=require;encrypt=true;trustServerCertificate=true;sslProtocol=TLSv1.2;user=eknjiznica-sa;password=yourStrong(!)Password"
@@ -22,17 +19,7 @@ object DatabaseClient {
             try {
                 Class.forName("net.sourceforge.jtds.jdbc.Driver") // For jTDS
                 connection = DriverManager.getConnection(CONNECTION_URL)
-
-
-                val connection: Connection = DriverManager.getConnection(CONNECTION_URL)
-                Log.d("DatabaseClient", "Connection successful!")
-
-                // Create a statement and execute the query
-                //For debug purposes
-                val query = "SELECT * FROM Material"
-                val statement: Statement = connection.createStatement()
-                val resultSet: ResultSet = statement.executeQuery(query)
-
+                DriverManager.getConnection(CONNECTION_URL)
                 Log.d("DatabaseClient", "Connection successful!")
             } catch (e: Exception) {
                 Log.e("DatabaseClient", "Connection failed: ${e.message}")
@@ -41,11 +28,12 @@ object DatabaseClient {
         return true
     }
 
+    // Return -1 to indicate failure
     suspend fun validateCredentials(username: String, password: String): Int {
         return withContext(Dispatchers.IO) {
             if (connection == null) {
                 Log.e("DatabaseClient", "Database connection is not initialized!")
-                return@withContext -1 // Return -1 to indicate failure
+                return@withContext -1
             }
             try {
                 val callableStatement = connection!!.prepareCall("{CALL Get_id_from_login_username(?, ?)}")
@@ -60,11 +48,11 @@ object DatabaseClient {
                     userId
                 } else {
                     Log.e("DatabaseClient", "Invalid login for user: $username")
-                    -1 // Return -1 to indicate invalid credentials
+                    -1
                 }
             } catch (e: Exception) {
                 Log.e("DatabaseClient", "Error during login validation: ${e.message}")
-                -1 // Return -1 to indicate an error
+                -1
             }
         }
     }
@@ -133,8 +121,6 @@ object DatabaseClient {
             materials
         }
     }
-
-
 
     suspend fun extendMaterialDate(materialId: Int, userId: Int) {
         withContext(Dispatchers.IO) {
@@ -221,59 +207,5 @@ object DatabaseClient {
 
             materials
         }
-    }
-
-
-
-    //This but for required
-    fun insertGradivo(
-        db: SQLiteDatabase,
-        inventarnaStevilka: Int,
-        idTipGradiva: Int,
-        idZalozba: Int,
-        idStatus: Int,
-        idPodruznice: Int,
-        naziv: String,
-        datumIzdaje: String
-    ) {
-        val values = ContentValues().apply {
-            put("Inventarna_stevilka", inventarnaStevilka)
-            put("ID_tip_gradiva", idTipGradiva)
-            put("ID_zalozba", idZalozba)
-            put("ID_status", idStatus)
-            put("ID_podruznice", idPodruznice)
-            put("Naziv", naziv)
-            put("Datum_izdaje", datumIzdaje)
-        }
-        db.insert("GRADIVO", null, values)
-    }
-
-    fun updateGradivo(
-        db: SQLiteDatabase,
-        inventarnaStevilka: Int,
-        idTipGradiva: Int,
-        idZalozba: Int,
-        idStatus: Int,
-        idPodruznice: Int,
-        naziv: String,
-        datumIzdaje: String
-    ) {
-        val values = ContentValues().apply {
-            put("ID_tip_gradiva", idTipGradiva)
-            put("ID_zalozba", idZalozba)
-            put("ID_status", idStatus)
-            put("ID_podruznice", idPodruznice)
-            put("Naziv", naziv)
-            put("Datum_izdaje", datumIzdaje)
-        }
-        val selection = "Inventarna_stevilka = ?"
-        val selectionArgs = arrayOf(inventarnaStevilka.toString())
-        db.update("GRADIVO", values, selection, selectionArgs)
-    }
-
-    fun deleteGradivo(db: SQLiteDatabase, inventarnaStevilka: Int) {
-        val selection = "Inventarna_stevilka = ?"
-        val selectionArgs = arrayOf(inventarnaStevilka.toString())
-        db.delete("GRADIVO", selection, selectionArgs)
     }
 }
